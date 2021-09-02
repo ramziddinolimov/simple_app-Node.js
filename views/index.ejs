@@ -1,0 +1,42 @@
+<%- include('parts/header') %> <% var error %>
+
+<section>
+  <div
+    class="
+      container
+      d-flex
+      flex-column
+      vh-100
+      justify-content-center
+      align-items-center
+    "
+  >
+    <h1>Login</h1>
+    <% if(error) {%>
+    <div class="alert my-2 alert-danger"><%= error%></div>
+    <% } %>
+    <form method="POST" class="mt-4">
+      <input
+        type="email"
+        name="email"
+        class="form-control form-control-lg"
+        placeholder="Email"
+        required
+      />
+
+      <input
+        type="password"
+        name="password"
+        class="form-control form-control-lg mt-2"
+        placeholder="Password"
+        required
+      />
+
+      <button class="btn btn-primary btn-lg w-100 mt-2">Login</button>
+
+      <a href="/signup" class="btn btn-lg btn-outline-success mt-2 w-100"
+        >Sign up</a
+      >
+    </form>
+  </div>
+</section>
