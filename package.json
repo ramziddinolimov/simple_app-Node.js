@@ -1,0 +1,24 @@
+{
+  "name": "simple_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ogabekolimov/simple_app-Node.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ogabekolimov/simple_app-Node.js/issues"
+  },
+  "homepage": "https://github.com/ogabekolimov/simple_app-Node.js#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
