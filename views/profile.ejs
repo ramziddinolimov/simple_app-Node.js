@@ -9,19 +9,19 @@
         
        <div>
            <h2 class="text-center my-3">Incoming</h2>
-           <form method="POST" class="form-control mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="width: 30rem;">
-            <input type="number" class="form-control my-3" id="floatingNumber" placeholder="Enter the amount" >
-            <button class="btn btn-primary" type="button" style="width: 30rem;">Button</button>
+           <form method="POST" action="/incoming" class="form-control mb-3">
+            <input type="text" class="form-control" name="floatingInput" id="floatingInput" placeholder="name@example.com" style="width: 30rem;">
+            <input type="number" class="form-control my-3" name="number" id="floatingNumber" placeholder="Enter the amount" >
+            <button class="btn btn-primary" type="submit" style="width: 30rem;">Button</button>
            </form>
        </div>
 
 
           <div>
             <h2 class="text-center my-3">Outcoming</h2>
-            <form method="POST" class="form-control mb-3">
-             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="width: 30rem;">
-             <input type="number" class="form-control my-3" id="floatingNumber" placeholder="Enter the amount" >
+            <form method="POST" action="outcoming" class="form-control mb-3">
+             <input type="text" class="form-control" name="text" id="floatingInput" placeholder="name@example.com" style="width: 30rem;">
+             <input type="number" class="form-control my-3" name="floatingNumber"  id="floatingNumber" placeholder="Enter the amount" >
              <button class="btn btn-primary" type="button" style="width: 30rem;">Button</button>
             </form>
         </div>
@@ -32,5 +32,6 @@
     <div class="card border-light mb-3 m-auto" style="max-width: 25rem;">
         <h2 class="card-header">Header</h2>
           <h5 class="card-title card-body">Light card title</h5>
+          <%console.log()%>
       </div>
 </section>

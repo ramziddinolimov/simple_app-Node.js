@@ -89,11 +89,48 @@ async function AuthUserMiddleware(req, res, next) {
   }
 }
 
+
+
 router.get("/profile", AuthUserMiddleware, (req, res) => {
   res.render("profile");
+});
+
+
+router.post("/incoming", async (req, res) => {
+  let {floatingInput, number} = req.body
+  console.log(floatingInput, number);
+  let ds = await  req.db.dss.find({
+    s: floatingInput,
+    
+
+  })
+
+  console.log(ds);
+
+  let dm = await  req.db.dms.findOne({
+    
+    m: number
+
+  })
+});
+
+
+router.post("/outcoming", async (req, res) => {
+  let {text, floatingNumber} = req.body
+  let cs = await req.db.css.findOne({
+    s: text,
+    m: floatingNumber
+    
+  })
 });
 
 module.exports = {
   router,
   path: "/",
 };
+
+
+
+
+
+
