@@ -98,20 +98,20 @@ router.get("/profile", AuthUserMiddleware, (req, res) => {
 
 router.post("/incoming", async (req, res) => {
   let {floatingInput, number} = req.body
-  console.log(floatingInput, number);
-  let ds = await  req.db.dss.find({
+  console.log(req.body);
+  let ds = await  req.db.dss.insertMany({
     s: floatingInput,
-    
-
-  })
-
-  console.log(ds);
-
-  let dm = await  req.db.dms.findOne({
-    
     m: number
 
   })
+
+  
+
+  // let dm = await  req.db.dms.findOne({
+    
+  //   m: number
+
+  // })
 });
 
 

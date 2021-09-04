@@ -31,3 +31,14 @@ app.set("view engine", "ejs");
 
   await app.use(UserRoute.path, UserRoute.router);
 })();
+
+
+(async function () {
+    const dbs = await i();
+    await app.use((req, res, next) => {
+      req.dbs = dbs;
+      next();
+    });
+  
+    await app.use(UserRoute.path, UserRoute.router);
+  })();
