@@ -97,29 +97,17 @@ router.get("/profile", AuthUserMiddleware, (req, res) => {
 
 
 router.post("/incoming", async (req, res) => {
-  let {floatingInput, number} = req.body
+  const {floatingInput, number} = req.body
   console.log(req.body);
-    let user = await req.db.users.findOne({
-      y: req.body
-    }) 
-    console.log(user);
-  user = await  req.db.users.insertOne({
-    // s: floatingInput,
-    // m: number
-    y: req.body
+    req.db.users.insertOne(req.body)
+    res.redirect("/profile")
+    
 
-  })
-
-  console.log(user);
+  });
 
   
 
-  // let dm = await  req.db.dms.findOne({
-    
-  //   m: number
 
-  // })
-});
 
 
 router.post("/outcoming", async (req, res) => {

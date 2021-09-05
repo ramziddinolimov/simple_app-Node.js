@@ -5,7 +5,7 @@ const path = require("path");
 const UserRoute = require("./routes/UserRoute");
 const mongo = require("./modules/mongo");
 
-app.listen(3000);
+
 
 app.use(express.json());
 app.use(
@@ -31,6 +31,10 @@ app.set("view engine", "ejs");
 
   await app.use(UserRoute.path, UserRoute.router);
 })();
+
+
+
+app.listen(3000);
 
 
 // (async function () {
