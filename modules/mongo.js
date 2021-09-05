@@ -25,21 +25,21 @@ async function mongo() {
   }
 };
 
-async function i() {
-  try {
-    await client.connect();
-    const dbs = await client.dbs("usersystem");
-    const dss = await dbs.collection("dss");
+// async function i() {
+//   try {
+//     await client.connect();
+//     const dbs = await client.dbs("usersystem");
+//     const dss = await dbs.collection("dss");
 
-    return {
-      dss,
-    };
-  } catch(errorr) {
-    console.log(errorr);
-  }
-};
+//     return {
+//       dss,
+//     };
+//   } catch(errorr) {
+//     console.log(errorr);
+//   }
+// };
 
 
 
 module.exports = mongo;
-module.exports = i;
+// module.exports = i;
