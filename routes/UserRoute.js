@@ -19,8 +19,8 @@ router.post("/signup", async (req, res) => {
     });
     return;
   }
-
-  let user = await req.db.users.findOne({
+  const users = await req.db.collection("users")
+  let user = await users.findOne({
     email: email.toLowerCase(),
   });
 
@@ -31,7 +31,7 @@ router.post("/signup", async (req, res) => {
     return;
   }
 
-  user = await req.db.users.insertOne({
+  user = await users.insertOne({
     email: email.toLowerCase(),
     password: await createCrypt(password),
   });
@@ -48,8 +48,8 @@ router.post("/", async (req, res) => {
     });
     return;
   }
-
-  let user = await req.db.users.findOne({
+  const users = await req.db.collection("users")
+  let user = await users.findOne({
     email: email.toLowerCase(),
   });
 
@@ -91,15 +91,32 @@ async function AuthUserMiddleware(req, res, next) {
 
 
 
-router.get("/profile", AuthUserMiddleware, (req, res) => {
-  res.render("profile");
+router.get("/profile", AuthUserMiddleware, async (req, res) => {
+  const incoming = await req.db.collection("incoming")
+  const outcoming = await req.db.collection("outcoming")
+  let outcoming1 = await outcoming.find().toArray()
+  let incoming1 = await incoming.find().toArray()
+
+  let y=0 
+  outcoming1.forEach(i => {
+    y+=Number(i.floatingNumber)
+  });
+  let x=0 
+  incoming1.forEach(e => {
+    x+=Number(e.number)
+  });
+  res.render("profile", {
+    incoming1,
+    outcoming1,
+    x,
+    y
+  });
 });
 
 
 router.post("/incoming", async (req, res) => {
-  const {floatingInput, number} = req.body
-  console.log(req.body);
-    req.db.users.insertOne(req.body)
+  const incoming = await req.db.collection("incoming")
+    incoming.insertOne(req.body)
     res.redirect("/profile")
     
 
@@ -111,12 +128,10 @@ router.post("/incoming", async (req, res) => {
 
 
 router.post("/outcoming", async (req, res) => {
-  let {text, floatingNumber} = req.body
-  let cs = await req.db.css.findOne({
-    s: text,
-    m: floatingNumber
-    
-  })
+  const outcoming = await req.db.collection("outcoming")
+   await outcoming.insertOne(req.body)
+   res.redirect("/profile")
+
 });
 
 module.exports = {
